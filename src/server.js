@@ -1,13 +1,19 @@
 const app = require('./app');
+const logger = require('./services/logger.service');
 
 // Get port from environment variable or use default
 const PORT = process.env.PORT || 3000;
 
 // Start server
 const server = app.listen(PORT, () => {
+  logger.info(`Server is running on port ${PORT}`, {
+    port: PORT,
+    environment: process.env.NODE_ENV || 'development',
+  });
   console.log(`Server is running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`Health check available at: http://localhost:${PORT}/health`);
+  console.log(`Logs available at: http://localhost:${PORT}/api/logs`);
 });
 
 // Graceful shutdown handler
