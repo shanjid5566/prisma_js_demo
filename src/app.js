@@ -9,6 +9,17 @@ app.use(express.json());
 // Middleware to parse URL-encoded request bodies
 app.use(express.urlencoded({ extended: true }));
 
+// root route
+app.get('/', (req, res) => {
+  res.status(200).json({ 
+    status: 'OK', 
+    message: 'Welcome to the API',
+    version: '1.0.0',
+    Email: "shanjidahmed66@gmail.com",
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Health check route
 app.get('/health', (req, res) => {
   res.status(200).json({ 
