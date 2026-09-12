@@ -1,12 +1,13 @@
-const app = require('./app');
+import app from './app.js';
+import config from './config/env.js';
 
 // Get port from environment variable or use default
-const PORT = process.env.PORT || 3000;
+const PORT = config.app.port;
 
 // Start server
 const server = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`Environment: ${config.app.env}`);
   console.log(`Health check available at: http://localhost:${PORT}/health`);
 });
 
@@ -35,4 +36,4 @@ process.on('unhandledRejection', (reason, promise) => {
   });
 });
 
-module.exports = server;
+export default server;

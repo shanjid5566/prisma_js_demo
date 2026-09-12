@@ -1,16 +1,15 @@
 # Express + Prisma Backend Server
 
-A Node.js backend server built with Express.js and Prisma ORM, following MVC architecture pattern.
+A Node.js backend server built with Express.js and Prisma ORM, using a OOP architecture.
 
 ## 📁 Project Structure
 
 ```
-cbreezy_backend_web_safari/
+My12Photos/
 ├── src/
-│   ├── routes/           # Route definitions
-│   ├── controllers/      # Request handlers
-│   ├── services/         # Business logic
-│   ├── app.js           # Express app configuration
+│   ├── modules/         # Feature-based domain modules
+│   │   └── user/        # Example user module
+│   ├── app.js           # Main Application class configuration
 │   └── server.js        # Server entry point
 ├── prisma/
 │   └── schema.prisma    # Database schema
