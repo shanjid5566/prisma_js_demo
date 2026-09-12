@@ -1,18 +1,22 @@
-// const { PrismaClient } = require('@prisma/client');
-// const prisma = new PrismaClient();
+// import { PrismaClient } from '@prisma/client';
 
 /**
  * User Service Layer
  * Handles business logic and database operations for users
  */
-class UserService {
+export class UserService {
+  constructor(prisma = null) {
+    // In a real app, inject PrismaClient instance via constructor
+    this.prisma = prisma;
+  }
+
   /**
    * Get all users from database
    * @returns {Promise<Array>} List of users
    */
   async getAllUsers() {
     try {
-      // Example: return await prisma.user.findMany();
+      // Example: return await this.prisma.user.findMany();
       
       // Mock data for demonstration
       return [
@@ -31,7 +35,7 @@ class UserService {
    */
   async getUserById(id) {
     try {
-      // Example: return await prisma.user.findUnique({ where: { id: parseInt(id) } });
+      // Example: return await this.prisma.user.findUnique({ where: { id: parseInt(id) } });
       
       // Mock data for demonstration
       return { id: parseInt(id), name: 'John Doe', email: 'john@example.com' };
@@ -47,7 +51,7 @@ class UserService {
    */
   async createUser(userData) {
     try {
-      // Example: return await prisma.user.create({ data: userData });
+      // Example: return await this.prisma.user.create({ data: userData });
       
       // Mock data for demonstration
       return { id: 3, ...userData };
@@ -64,7 +68,7 @@ class UserService {
    */
   async updateUser(id, userData) {
     try {
-      // Example: return await prisma.user.update({ where: { id: parseInt(id) }, data: userData });
+      // Example: return await this.prisma.user.update({ where: { id: parseInt(id) }, data: userData });
       
       // Mock data for demonstration
       return { id: parseInt(id), ...userData };
@@ -80,7 +84,7 @@ class UserService {
    */
   async deleteUser(id) {
     try {
-      // Example: return await prisma.user.delete({ where: { id: parseInt(id) } });
+      // Example: return await this.prisma.user.delete({ where: { id: parseInt(id) } });
       
       // Mock data for demonstration
       return { id: parseInt(id), message: 'User deleted successfully' };
@@ -89,5 +93,3 @@ class UserService {
     }
   }
 }
-
-module.exports = new UserService();
