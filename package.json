@@ -1,25 +1,25 @@
 {
-    "name":  "cbreezy_backend_web_safari",
-    "version":  "1.0.0",
-    "description":  "",
-    "main":  "src/server.js",
-    "scripts":  {
-                    "start":  "node src/server.js",
-                    "dev":  "nodemon src/server.js",
-                    "prisma:generate":  "prisma generate",
-                    "prisma:migrate":  "prisma migrate dev",
-                    "prisma:studio":  "prisma studio",
-                    "test":  "echo \"Error: no test specified\" \u0026\u0026 exit 1"
-                },
-    "keywords":  [
-
-                 ],
-    "author":  "",
-    "license":  "ISC",
-    "dependencies":  {
-                         "express":  "5.2.1"
-                     },
-    "devDependencies":  {
-                            "nodemon":  "3.1.14"
-                        }
+    "name": "my12photos",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js",
+        "prisma:generate": "prisma generate",
+        "prisma:migrate": "prisma migrate dev",
+        "prisma:studio": "prisma studio",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^17.4.2",
+        "express": "5.2.1"
+    },
+    "devDependencies": {
+        "nodemon": "3.1.14"
+    }
 }
