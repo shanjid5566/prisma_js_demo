@@ -1,17 +1,19 @@
-const userService = require('../services/user.service');
-
 /**
  * User Controller Layer
  * Handles HTTP requests and responses for user-related endpoints
  */
-class UserController {
+export class UserController {
+  constructor(userService) {
+    this.userService = userService;
+  }
+
   /**
    * Get all users
    * @route GET /api/users
    */
-  async getAllUsers(req, res, next) {
+  getAllUsers = async (req, res, next) => {
     try {
-      const users = await userService.getAllUsers();
+      const users = await this.userService.getAllUsers();
       
       res.status(200).json({
         success: true,
@@ -27,10 +29,10 @@ class UserController {
    * Get single user by ID
    * @route GET /api/users/:id
    */
-  async getUserById(req, res, next) {
+  getUserById = async (req, res, next) => {
     try {
       const { id } = req.params;
-      const user = await userService.getUserById(id);
+      const user = await this.userService.getUserById(id);
       
       if (!user) {
         return res.status(404).json({
@@ -52,7 +54,7 @@ class UserController {
    * Create new user
    * @route POST /api/users
    */
-  async createUser(req, res, next) {
+  createUser = async (req, res, next) => {
     try {
       const userData = req.body;
       
@@ -64,7 +66,7 @@ class UserController {
         });
       }
       
-      const newUser = await userService.createUser(userData);
+      const newUser = await this.userService.createUser(userData);
       
       res.status(201).json({
         success: true,
@@ -80,12 +82,12 @@ class UserController {
    * Update existing user
    * @route PUT /api/users/:id
    */
-  async updateUser(req, res, next) {
+  updateUser = async (req, res, next) => {
     try {
       const { id } = req.params;
       const userData = req.body;
       
-      const updatedUser = await userService.updateUser(id, userData);
+      const updatedUser = await this.userService.updateUser(id, userData);
       
       res.status(200).json({
         success: true,
@@ -101,10 +103,10 @@ class UserController {
    * Delete user
    * @route DELETE /api/users/:id
    */
-  async deleteUser(req, res, next) {
+  deleteUser = async (req, res, next) => {
     try {
       const { id } = req.params;
-      const result = await userService.deleteUser(id);
+      const result = await this.userService.deleteUser(id);
       
       res.status(200).json({
         success: true,
@@ -116,5 +118,3 @@ class UserController {
     }
   }
 }
-
-module.exports = new UserController();
